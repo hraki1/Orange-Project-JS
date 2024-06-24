@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>UserEnter</title>
+
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/rege.css">   
+</head>
+<body>
+ <!--    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div> -->
+    <form>
+      <div class="image-container">
+        <img src="img/Screenshot 2024-06-23 133320-Photoroom.png" alt="Registration Image">
+      </div>
+        <h3>Register</h3>
+        
+        <div id="error-message" style="color: red;"></div>
+        <form id="registrationForm">
+          <label for="">FirstName</label>
+          <input type="text" id="firstName" placeholder="First Name" required />
+          <label for="">LastName</label>
+          <input type="text" id="lastName" placeholder="Last Name" required />
+          <label for="">Email</label>
+          <input type="email" id="email" placeholder="Email" required />
+          <label for="">Password</label>
+          <input  type="password"  id="regPassword" placeholder="Password"  required />
+          <label for="">Confirm password</label>
+          <input  type="password"  id="confirmPassword" placeholder="confirmPassword"  required />
+
+          <button onclick="storeRegistrationData(event)" >Register</button>
+            
+
+            <div class="register-link">
+                <p>Already have account <a href="admiLogin.html">Login</a></p>
+            </div>
+    </form>
+   <script src="javascript/script-login.js">
+
+   </script>
+   
+</body>
+</html>

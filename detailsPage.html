@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- normalize Css File -->
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <!-- Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Toster -->
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <!-- main Css File -->
+    <link id="link" rel="stylesheet" href="./assets/css/detailsPage.css" />
+    <link id="link" rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="login-main">
+      <header id="login-header">
+        <div class="container">
+          <h1>
+            <a href="" id="nav-logo">
+              <img
+                src="./assets/imgs/Screenshot 2024-06-23 133320.png"
+                alt=""
+              />
+            </a>
+          </h1>
+          <nav>
+            <ul></ul>
+          </nav>
+        </div>
+      </header>
+      <article id="detailsPage">
+        <ul class="des-list">
+          <li>Level: <span id="des-level">Advince</span></li>
+          <li>Time: <span id="des-time">1:0:0</span> hour</li>
+          <li><span id="des-numberOfQuestion">5</span> Questions</li>
+        </ul>
+        <div class="login-user">
+          <div class="answers">
+            <input
+              id="enteredUserNickname"
+              type="text"
+              placeholder="Nickname"
+            />
+          </div>
+          <div class="footer">
+            <button id="btn-enter-nickname" class="btn">OK, go!</button>
+          </div>
+        </div>
+      </article>
+      <article id="login-user">
+        <div class="logo">
+          <h1>
+            <a href="" id="nav-logo">
+              <img
+                src="./assets/imgs/Screenshot 2024-06-23 133320.png"
+                alt=""
+              />
+            </a>
+          </h1>
+        </div>
+        <div class="login-user">
+          <div class="answers">
+            <input id="enteredUserID" type="text" placeholder="User ID" />
+          </div>
+          <div class="footer">
+            <button id="btn-enter-login-user" class="btn">Enter</button>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- question part -->
+    <!-- __________________________________________________________________________________________________________________________ -->
+
+    <!-- start Header -->
+    <div id="questionPart" class="question-part">
+      <header>
+        <div class="container">
+          <h1>
+            <a href="" id="nav-logo">
+              <img
+                src="./assets/imgs/Screenshot 2024-06-23 133320.png"
+                alt=""
+              />
+            </a>
+          </h1>
+          <nav>
+            <ul></ul>
+          </nav>
+        </div>
+      </header>
+      <!-- End Header -->
+      <main>
+        <div class="container">
+          <section id="question"></section>
+          <section>
+            <div class="question">
+              <div class="header">
+                <div class="numbers">
+                  Question No.<span id="nfsq"> </span> of <span> </span>
+                  <span id="totquestion"> </span>
+                </div>
+                <div class="timer">
+                  <span id="timer-h">0</span>
+                  <span id="timer-m">0</span>
+                  <span id="timer-s">0</span>
+                </div>
+              </div>
+              <div class="text">
+                <p>
+                  Q. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quod aspernatur ut tempora ipsam voluptatibus reprehenderit.
+                  Dicta, impedit. Natus enim qui eum voluptas velit repudiandae
+                  consectetur amet autem magnam! Ab, neque!
+                </p>
+              </div>
+              <div class="select">
+                Please Select one of the following answers:
+              </div>
+              <div class="answers" id="answers">
+                <p id="answer-1">hello</p>
+                <p id="answer-2">hello</p>
+                <p id="answer-3">hello</p>
+                <p id="answer-4">hello</p>
+              </div>
+              <div class="footer">
+                <button id="btn-next" class="btn">
+                  Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./assets/js/detailsPage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+/* styles.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    background: rgb(15 23 42);
+}
+.logo {
+    height: 100%;
+    text-decoration: overline;
+    font-style: italic;
+    font-size: 7px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    height: 50px;
+}
+
+.logo span {
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.logo i {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+margin-top: 10px;
+margin-left: 10px;
+display: none;
+
+}
+#toggle-sidebar i {
+    font-size: 30px;
+    color: white;
+}
+#nav-logo img{
+    height: 30px;
+    margin: 0 auto;
+}
+
+.sidebar-nav {
+    backdrop-filter: blur(20px);
+    position: absolute;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background-color:rgb(153, 170, 187,.1);
+    transition: transform 2s ease;
+    width: 250px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+    padding-top: 10px;
+}
+.sidebar-nav.show {
+    left: 0;
+}
+
+ a{
+    position: relative;
+    color: white;
+    font-size: 14px;
+    display: table;
+    width: 250px;
+    height: 50px;
+    text-decoration: none;
+}
+
+.sidebar-nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item {
+    position: relative;
+    top: 12px;
+}
+
+.sidebar-nav a:hover {
+    background: rgb(15, 23, 42, .5);
+}
+
+.sidebar-nav .active a {
+    font-weight: bold;
+    background: rgb(15 23 42);
+}
+
+.logout {
+    position: fixed;
+    bottom: 0;
+}
+
+
+main {
+    margin-top: 10px;
+    margin-left: 200px;
+    padding: 20px;
+    background-color: #5c646e80;
+    width: calc(100% - 200px);
+    min-height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+section {
+    display: none;
+}
+h2 {
+    color: white;
+}
+
+section.active {
+    display: block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form select,
+form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #dfe9f5;
+}
+
+form button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+.options{
+    display: flex ;
+    flex-direction: column;
+    
+}
+.options .top-row,
+.options .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.options input {
+    width: calc(50% - 5px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+#Competition-details .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+   
+}
+
+#Competition-details .form-group {
+    margin-bottom: 15px;
+}
+
+#Competition-details label {
+    font-weight: bold;
+    color: #fff;
+}
+
+#Competition-details textarea,
+#Competition-details input[type="text"],
+#Competition-details input[type="number"],
+#Competition-details select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    background-color: #dfe9f5;
+}
+
+#Competition-details .btn-submit {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#Competition-details .btn-submit:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.scrollable-table-wrapper {
+    overflow-x: auto;
+}
+
+table thead tr {
+    background-color: rgb(15 23 42);
+    color: #fff;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    white-space: nowrap;
+}
+table th:nth-of-type(1) {
+    width: 150px;
+}
+table tbody tr:nth-of-type(odd) {
+    background-color: #f2f6fb;
+}
+table tbody tr:nth-of-type(even) {
+    background-color: #dfe9f5;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(15 23 42);
+    border-radius: 5px;
+}
+.table-options{ 
+    display: flex;
+    justify-content: space-between;
+
+}
+.table-options select,
+.table-options button{
+    padding: 5px;
+    background-color: #5c646e80;
+    color: white;
+    border-radius: 5px;
+}
+
+.toggle-competition {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggle-competition:hover {
+    background-color: #218838;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: rgb(15 23 42);
+    color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.card {
+    width: 50%;
+    margin: 10px;
+    background-color: rgb(153, 170, 187, .1);    
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.card h3 {
+    margin: 10px;
+    color: white;
+}
+
+#card-container{
+    display: flex;
+    flex-direction: row;
+}
+.timer {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: white;
+}
+.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
+.incorrect:hover {
+    background-color: rgb(198, 5, 5);
+    color: white;
+}
+.centered {
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar-nav {
+        left: -100%;
+        background-color: rgb(153, 170, 187);
+        width: 100%;
+    }
+
+    .sidebar-nav a {
+        width: 100%;
+    }
+
+    main {
+        margin: 10px auto;
+        padding: 20px;
+        width: calc(100% - 20px);
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #card-container {
+        flex-direction: column;
+    }
+    .card{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+}

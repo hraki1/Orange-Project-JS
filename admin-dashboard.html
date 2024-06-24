@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <a href="#" id="toggle-sidebar">
+            <i class="fas fa-bars "></i>
+        </a>                
+        <a href="" id="nav-logo">
+            <img src="img/Screenshot 2024-06-23 133320.png" alt="">
+        </a>             
+    </nav>
+    <div class="container">
+        <div class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#" class="logo">
+                        <i class="fas fa-solid fa-cube"></i>
+                        <span class="nav-item">Intelegent cube</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Competition-details">
+                        <i class="fas fa-solid fa-circle-info"></i>
+                        <span class="nav-item">Competition Info</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#view-questions">
+                        <i class="fas fa-solid fa-circle-question"></i>
+                        <span class="nav-item">View Questions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#view-participants">
+                        <i class="fas fa-solid fa-users"></i>
+                        <span class="nav-item">View Participants</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#track-progress">
+                        <i class="fas fa-solid fa-table-list"></i>
+                        <span class="nav-item">Track Progress</span>
+                    </a>
+                </li>
+
+            </ul>
+            
+                <a href="admiLogin.html" class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-item">Log out</span>
+                </a>
+        </div>   
+        <main>
+            <section id="view-questions" class="tab-content active">
+                <h2>View Questions</h2><br>
+                <div class="table-options">
+                <button id="open-popup-btn-question">Add Question</button>
+                <select id="question-level">
+                    <option value="">Select Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                </div>
+                <div class="scrollable-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Question</th>
+                                <th>Options</th>
+                                <th>Correct Answer</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="view-participants" class="tab-content">
+                <h2>View Participants</h2><br>
+                <div class="table-options">
+                <button id="open-popup-btn">Add Participant</button>
+                <select id="participant-level" >
+                    <option value="">Select Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                </div>
+                <div class="scrollable-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Name</th>
+                            <th>User ID</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+            <section id="track-progress" class="tab-content">
+                <h2>Start Competition</h2><br>
+                <div id="card-container">
+                    <div class="card">
+                        <h3>Start beginner Competition</h3>
+                        <span class="timer" data-timer="0" id="beginner-timer">00:00</span><br>
+                        <button class="toggle-competition" id="toggle-beginner">Start </button>
+                    </div>
+                    <div class="card">
+                        <h3>Start Advanced Competition</h3>
+                        <span class="timer" data-timer="0" id="advanced-timer">00:00</span><br>
+                        <button class="toggle-competition" id="toggle-advanced">Start </button>
+                    </div>
+                </div><br>
+                <h2>Track Progress</h2><br>
+                <div class="table-options">
+                <select id="levelSelect" required>
+                    <option value="" >Select Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                </div>
+                <div class="scrollable-table-wrapper">
+                <table id="resultsTable" >
+                    <thead>
+                        <tr id="headerRow">
+                            <th id="name-th">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+            <section id="Competition-details" class="tab-content">
+                <h2>Competition details</h2><br>
+                    <form id="competition-details-form">
+                        <div>
+                            <select required>
+                                <option value="">Select Level</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="competition-title">Title:</label>
+                            <input type="text" id="competition-title" name="competition-title" required>
+                        </div>
+                        <div>
+                            <label for="competition-description">Description:</label>
+                            <textarea id="competition-description" name="competition-description" rows="4" required></textarea>
+                        </div>
+                        <div>
+                            <label for="number-of-questions">Number of Questions:</label>
+                            <input type="number" id="number-of-questions" name="number-of-questions" min="1" required>
+                        </div>
+                        <div>
+                            <label for="duration-hours">Duration (hours):</label>
+                            <input type="number" id="duration-hours" step=".01" required>
+                        </div>
+                        <button type="submit" >Save Competition Details</button>
+                    </form>
+            </section>
+            <!-- <section id="start-stop-competition" class="tab-content">
+                <h2>Start Competition</h2>
+                <div id="card-container">
+                <div class="card">
+                    <h3>Start beginner Competition</h3>
+                    <span class="timer" data-timer="0" id="beginner-timer">00:00</span><br>
+                    <button class="toggle-competition" id="toggle-beginner">Start </button>
+                    </div>
+                <div class="card">
+                    <h3>Start Advanced Competition</h3>
+                    <span class="timer" data-timer="0" id="advanced-timer">00:00</span><br>
+                    <button class="toggle-competition" id="toggle-advanced" >Start </button>
+                </div>
+                </div>
+            </section> -->
+        </main>
+    
+        <div id="add-participant-popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Add Participant</h2>
+                <form id="participant-form">
+                    <select required>
+                        <option value="">Select Level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <input type="text" placeholder="Name" required>
+                    <input type="text" placeholder="User ID" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="add-questions-popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Add Questions</h2>
+                <form id="add-question-form">
+                    <select required>
+                        <option value="">Select Level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <input type="text" placeholder="Question" required>
+                    <div class="options">
+                        <div class="top-row">
+                        <input type="number" required>
+                        <input type="number" required>
+                        </div>
+                        <div class="bottom-row">
+                        <input type="number" required>
+                        <input type="number" required>
+                        </div>
+                    </div>
+                    <input type="number" placeholder="Correct Answer" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+    <script src="javascript/script-dashboard.js"></script>
+</body>
+
+</html>

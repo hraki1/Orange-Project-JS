@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>UserEnter</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/loginstyle.css">   
+</head>
+<body>
+    <!-- <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div> -->
+    <form>
+      <img src="img/Screenshot 2024-06-23 133320-Photoroom.png" alt=""><br>
+        <h3>Log in</h3>
+        <div id="error-message" style="color: red;"></div>
+        
+        <form id="loginForm">
+            <label for="loginEmail">email</label>
+          <input type="email" id="loginEmail" placeholder="Email" required />
+          <label for="loginPassword">Password</label>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required />
+          <button
+            onclick="authenticateUser(event)">Login</button>
+           
+        
+            <div class="register-link">
+                <p>Don't have an account?<a href="adminRegister.html">Register</a></p>
+            </div>
+
+    </form>
+    <script src="javascript/script-login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>welcomePage</title>
+    <meta name="description" content="project" />
+    <link rel="stylesheet" href="css/welcomePage.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <div class="right">
+              <li>
+                <img
+                  src="img/Screenshot 2024-06-23 133320-Photoroom.png"
+                  alt=""
+                />
+              </li>
+            </div>
+            <div class="left">
+              <li>
+                <a href="./detailsPage.html" target="_blank"
+                  >Participant Login</a
+                >
+              </li>
+              <li>
+                <a href="./admiLogin.html" target="_blank">Admin Login</a>
+              </li>
+            </div>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <!-- <img src="img/Screenshot 2024-06-23 133320-Photoroom.png" alt=""><br><br> -->
+        <h1>Welcome To The Intelegent Cube!</h1>
+        <br />
+        <div class="flex-container">
+          <p>
+            Are you ready to challenge your math skills? Click the Login button
+            to start the game and test your abilities!
+          </p>
+          <div class="illustration">
+            <img src="img/15274235.png" alt="Math Game Illustration" />
+          </div>
+        </div>
+        <br />
+        <section class="instructions">
+          <br />
+          <h2>Instructions</h2>
+          <p>Follow these steps to play the game:</p>
+          <ul>
+            <li>Click the <b>"Login"</b> button to begin.</li>
+            <li>Solve the math problems presented to you.</li>
+            <li>
+              Click the <b>"Next"</b> button to move to the next question after
+              solving each problem.
+            </li>
+            <li>
+              Click the <b>"Submit"</b> button after finishing all the questions
+              to submit your answers.
+            </li>
+          </ul>
+        </section>
+        <section class="rewards">
+          <br />
+          <h2>Rewards</h2>
+          <ul>
+            <li>Complete <b>Level 1</b>: Bronze Medal</li>
+            <li>Complete <b>Level 2</b>: Silver Medal</li>
+            <li>Complete <b>Level 3</b>: Gold Medal</li>
+            <li><b>Perfect Score</b>: Diamond Trophy</li>
+          </ul>
+        </section>
+      </main>
+      <footer>
+        <p>&copy; 2024 Math Game. All rights reserved.</p>
+      </footer>
+    </div>
+    <script>
+      function participantAsAdmin() {
+        window.location.assign("");
+      }
+
+      function login() {
+        window.location.assign("");
+      }
+      competitionDetails_advanced = {
+        title: "2",
+        description: "3wwwwwwwwwwwwssswwwwwwwwwwwwww",
+        prizes: "3",
+        numberOfQuestions: "10",
+        duration: "1",
+        state: true,
+        endDate: "6/21/2024, 8:51:43 PM",
+      };
+
+      competitionDetails_beginner = {
+        title: "1",
+        description: "3",
+        prizes: "3",
+        numberOfQuestions: "10",
+        duration: "1",
+        state: true,
+      };
+      localStorage.setItem(
+        "competitionDetails_beginner",
+        JSON.stringify(competitionDetails_advanced)
+      );
+      localStorage.setItem(
+        "competitionDetails_advanced",
+        JSON.stringify(competitionDetails_beginner)
+      );
+    </script>
+  </body>
+</html>

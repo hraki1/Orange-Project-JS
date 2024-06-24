@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+
+}
+/* Reset default list styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #9aa1a9;
+}
+
+.logo img {
+    max-height: 40px;
+}
+
+/* Rest of your styles... */
+
+.logo  {
+    display: inline; 
+  cursor: pointer;
+  width: 100%;
+  margin: 0 0.5rem;
+}
+  img {
+    display: inline;
+    width: 20%;
+    height: auto;
+    margin: 0 0.5rem;
+}
+header li
+{
+    border: 1px ;
+}
+body {
+    background: rgba(92, 100, 110, 0.13);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+/*     overflow: hidden;  
+ */}
+
+
+.container {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(15 23 42);  
+      padding: 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; 
+    max-height: 100%;
+    color: #fff;
+
+}
+.container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+/* styles.css */
+
+/* Reset default list styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+header {
+    background-color: rgb(15 23 42);
+        color: #fff; /* Text color */
+    padding: 10px 0; 
+    width:100%; 
+    margin: 0 auto; 
+
+
+    /* Add some spacing */
+}
+
+nav ul {
+    display: flex; /* Display links horizontally */
+    justify-content: space-between; /* Distribute links evenly */
+    align-items: center; /* Vertically center items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px; /* Add spacing around links */
+}
+
+.logo img {
+    max-height: 40px; /* Adjust logo size */
+}
+
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.left{
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #9aa1a9;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     gap: 10px; 
+    margin-bottom: 20px;
+    margin-top: 30px; 
+
+}
+
+.flex-container p {
+    font-size: 21px;
+    line-height: 1.6;
+    margin: 0; 
+    flex: 1; 
+}
+
+.flex-container .illustration {
+    flex: 1; 
+}
+
+.illustration img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+}
+
+.instructions {
+    margin-top: 40px;
+}
+
+.instructions h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.instructions p {
+    font-size: 19.2px;
+    margin-bottom: 10px;
+}
+
+.instructions ul {
+    list-style-type: none;
+    font-size: 19.2px;
+}
+
+.instructions ul li {
+    background: rgba(92, 100, 110, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.rewards {
+    margin-top: 40px;
+}
+
+.rewards h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.rewards ul {
+    list-style-type: none;
+    font-size: 19px;
+}
+
+.rewards ul li {
+    background: rgba(92, 100, 110, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+footer p {
+    font-size: 14.4px;
+    color: #fff;
+}
