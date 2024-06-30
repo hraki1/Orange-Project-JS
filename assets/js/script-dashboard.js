@@ -1,8 +1,9 @@
 
 // navgiate betweeen tabs
 document.addEventListener('DOMContentLoaded', function () {
+
     displayParticipantsTable();
-    displayProgressTable();
+    // displayProgressTable();
     displayQuestionsTable();
     displayCompetitionDetails();
     openPopup('add-participant-popup', 'open-popup-btn', '.close');
@@ -11,9 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tabs = document.querySelectorAll('.sidebar-nav ul li a');
     const contents = document.querySelectorAll('.tab-content');
     displayCompetitionDetails(); 
-
-    // var quizzesResults=[{"id":"1","name":"ahmad","totalTime":"0:0:1","userLevel":"advanced","answers":[{"question":"2455","selectedAnswer":8,"timeSelectedAnswer":"0:0:1","correct":true},{"question":"2455","selectedAnswer":8,"timeSelectedAnswer":"0:0:1","correct":true}]},{"id":"1","name":"mohammad majed","totalTime":"0:0:1","userLevel":"advanced","answers":[{"question":"2455","selectedAnswer":8,"timeSelectedAnswer":"0:0:1","correct":true},{"question":"2455","selectedAnswer":8,"timeSelectedAnswer":"0:0:1","correct":true}]}]
-    // localStorage.setItem('quizzesResults', JSON.stringify(quizzesResults))
 
     tabs.forEach(tab => {
         tab.addEventListener('click', function (e) {
@@ -87,6 +85,7 @@ document.getElementById('participant-form').addEventListener('submit', function(
         name: nameInput.value.trim(),
         id: idInput.value.trim(),
         level: selectedLevel,
+        isactive: true,
     };
     
     var participantsArray = JSON.parse(localStorage.getItem('participants')) || [];
@@ -108,12 +107,13 @@ document.getElementById('participant-form').addEventListener('submit', function(
 });
 // display participant table
 function getParticipants(level) {
-    var participants = JSON.parse(localStorage.getItem('participants')) || [];
-        if (level) {
-        return participants.filter(participant => participant.level === level);
+    var participantsArray = JSON.parse(localStorage.getItem('participants')) || [];
+    if (level) {
+        return participantsArray.filter(participant => participant.level === level && participant.isactive);
     }
-    return participants;
+    return participantsArray.filter(participant => participant.isactive);
 }
+
 document.getElementById('participant-level').addEventListener('change', function() {
     var selectedLevel = this.value;
     displayParticipantsTable(selectedLevel);
@@ -123,32 +123,51 @@ function displayParticipantsTable(level) {
     var tbody = document.querySelector('#view-participants tbody');
 
     tbody.innerHTML = '';
-    participants.forEach(function(participant,index) {
+    participants.forEach(function(participant, index) {
         var row = document.createElement('tr');
         row.innerHTML = `
             <td>${participant.level}</td>
             <td>${participant.name}</td>
             <td>${participant.id}</td>
             <td><i class="fa-solid fa-user-pen edit-icon" data-index="${index}" style="cursor: pointer;"></i></td>
-            <td><i class="fa-solid fa-user-slash delete-icon" data-index="${index}" style="cursor: pointer;"></i></td>
+            <td><i class="fa-solid fa-trash delete-icon" data-index="${index}" style="cursor: pointer;"></i></td>
         `;
         tbody.appendChild(row);
     });
-            
-            document.querySelectorAll('.edit-icon').forEach(function(editButton) {
+
+    document.querySelectorAll('.edit-icon').forEach(function(editButton) {
         editButton.addEventListener('click', function() {
             var index = this.getAttribute('data-index');
-            editParticipant(index,level);
-            });
+            editParticipant(index, level);
         });
+    });
 
     document.querySelectorAll('.delete-icon').forEach(function(deleteButton) {
         deleteButton.addEventListener('click', function() {
             var index = this.getAttribute('data-index');
-            deleteParticipant(index,level);
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2196f3',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteParticipant(index, level);
+                    Swal.fire(
+                        'Deleted!',
+                        'The participant has been deleted.',
+                        'success'
+                    )
+                }
             });
         });
+    });
 }
+
 // edit participant infromation 
 function editParticipant(index,level) {
     var participantsArray = JSON.parse(localStorage.getItem('participants')) || [];
@@ -176,18 +195,19 @@ function editParticipant(index,level) {
 
 }
 //delete participant 
-function deleteParticipant(index,level) {
+function deleteParticipant(index, level) {
     var participantsArray = JSON.parse(localStorage.getItem('participants')) || [];
-    var filteredParticipant = getParticipants(level);
-    var participantToDelete = filteredParticipant[index];
+    var filteredParticipants = getParticipants(level);
+    var participantToDelete = filteredParticipants[index];
 
     var originalIndex = participantsArray.findIndex(p => p.id === participantToDelete.id);
 
     if (originalIndex !== -1) {
-        participantsArray.splice(originalIndex, 1);
-        localStorage.setItem('participants', JSON.stringify(participantsArray)); 
+        participantsArray[originalIndex].isactive = false;
+        localStorage.setItem('participants', JSON.stringify(participantsArray));
         displayParticipantsTable();
-}}
+    }
+}
 
 
 // add question
@@ -210,7 +230,8 @@ document.getElementById('add-question-form').addEventListener('submit', function
         question: questionInput.value.trim(),
         corrcetAnswer: corrcetAnswerInput.value.trim(),
         level: selectedLevel,
-        options: OptionsList
+        options: OptionsList,
+        isActive: true
     };
 
     var questionsArray = JSON.parse(localStorage.getItem('questions')) || [];
@@ -232,10 +253,9 @@ document.getElementById('add-question-form').addEventListener('submit', function
 function getQuestions(level) {
     var questions = JSON.parse(localStorage.getItem('questions')) || [];
     if (level) {
-        return questions.filter(question => question.level === level);
+        return questions.filter(question => question.level === level && question.isActive);
     }
-    console.log(questions)
-    return questions;
+    return questions.filter(question => question.isActive);
 }
 document.getElementById('question-level').addEventListener('change', function() {
     var selectedLevel = this.value;
@@ -254,11 +274,11 @@ function displayQuestionsTable(level) {
             <td>${question.options}</td>
             <td>${question.corrcetAnswer}</td>
             <td><i class="fa-solid fa-pen-to-square edit-question-icon" data-index="${index}" style="cursor: pointer;"></i></td>
-            <td><i class="fa-regular fa-square-minus delete-question-icon" data-index="${index}" style="cursor: pointer;"></i></td>
+            <td><i class=" fa-solid fa-trash delete-question-icon" data-index="${index}" style="cursor: pointer;"></i></td>
         `;
         tbody.appendChild(row);
     });
-                document.querySelectorAll('.edit-question-icon').forEach(function(editButton) {
+    document.querySelectorAll('.edit-question-icon').forEach(function(editButton) {
         editButton.addEventListener('click', function() {
             var index = this.getAttribute('data-index');
             editQuestion(index,level);
@@ -268,9 +288,28 @@ function displayQuestionsTable(level) {
     document.querySelectorAll('.delete-question-icon').forEach(function(deleteButton) {
         deleteButton.addEventListener('click', function() {
             var index = this.getAttribute('data-index');
-            deleteQuestion(index,level);
+            
+            
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2196f3',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteQuestion(index, level);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your question has been deleted.',
+                        'success'
+                    )
+                }
             });
         });
+    });
 }
 // delete question
 function deleteQuestion(index, level) {
@@ -278,14 +317,15 @@ function deleteQuestion(index, level) {
 
     var filteredQuestions = getQuestions(level);
 
-    var questionToDelete = filteredQuestions[index];
-    var originalIndex = questions.findIndex(q => q.question === questionToDelete.question);
+    var questionToUpdate = filteredQuestions[index];
+    var originalIndex = questions.findIndex(q => q.question === questionToUpdate.question);
 
     if (originalIndex !== -1) {
-        questions.splice(originalIndex, 1);
-        localStorage.setItem('questions', JSON.stringify(questions)); 
-        displayQuestionsTable(level); 
-}}
+        questions[originalIndex].isActive = false; 
+        localStorage.setItem('questions', JSON.stringify(questions));
+        displayQuestionsTable(level);
+    }
+}
 // edit question
 function editQuestion(filteredIndex, level) {
     var questions = JSON.parse(localStorage.getItem('questions')) || [];
@@ -319,14 +359,15 @@ function editQuestion(filteredIndex, level) {
     }
 }
 
-
 function displayProgressTable(level) {
     var quizzesResults = JSON.parse(localStorage.getItem('quizzesResults')) || [];
+    var participants = JSON.parse(localStorage.getItem('participants')) || [];
 
     const table = document.getElementById('resultsTable');
     const headerRow = document.getElementById('headerRow');
     const tableBody = table.getElementsByTagName('tbody')[0];
 
+    // Clear existing table headers and rows
     while (headerRow.firstChild) {
         headerRow.removeChild(headerRow.firstChild);
     }
@@ -335,14 +376,24 @@ function displayProgressTable(level) {
         tableBody.removeChild(tableBody.firstChild);
     }
 
-    const filteredResults = quizzesResults.filter(result => !level || result.userLevel === level)
-                                          .sort((a, b) => b.correctAnswers - a.correctAnswers);
+    const filteredResults = quizzesResults.filter(result => {
+        if (level && result.userLevel !== level) {
+            return false; 
+        }
+        const participant = participants.find(p => p.id === result.id && p.isactive);
+        return participant !== undefined;
+    }).sort((a, b) => b.numberOfCorrectAnswers - a.numberOfCorrectAnswers);
 
     const nameHeader = document.createElement('th');
     nameHeader.innerHTML = 'Name';
     headerRow.appendChild(nameHeader);
 
-    const maxQuestions = Math.max(...filteredResults.map(result => result.answers.length));
+        const competitionDetailsKey = 'competitionDetails_' + level;
+        const competitionDetails = JSON.parse(localStorage.getItem(competitionDetailsKey));
+
+        const maxQuestions = competitionDetails && competitionDetails.numberOfQuestions ? competitionDetails.numberOfQuestions : 0;
+
+
 
     for (let i = 0; i < maxQuestions; i++) {
         const th = document.createElement('th');
@@ -366,8 +417,9 @@ function displayProgressTable(level) {
         const nameCell = row.insertCell();
         nameCell.textContent = result.name;
 
-        result.answers.forEach((answer, index) => {
+        result.answers.forEach((answer) => {
             const cell = row.insertCell();
+            console.log(answer.timeSelectedAnswer)
             cell.textContent = answer.timeSelectedAnswer;
             cell.classList.add('centered', answer.correct ? 'correct' : 'incorrect');
         });
@@ -383,7 +435,7 @@ function displayProgressTable(level) {
         totalTimeCell.classList.add('centered');
 
         const correctAnswersCell = row.insertCell();
-        correctAnswersCell.textContent = result.correctAnswers;
+        correctAnswersCell.textContent = result.numberOfCorrectAnswers;
         correctAnswersCell.classList.add('centered');
     });
 }
@@ -463,7 +515,6 @@ function startCompetitionTimer(timerId, level,button) {
     var startDate = new Date(); 
     var endDate = new Date(startDate.getTime() + totalSeconds * 1000).toLocaleString();
     competitionDetails.endDate = endDate;
-    console.log(endDate);
     competitionDetails.state = true;
     localStorage.setItem('competitionDetails_' + level, JSON.stringify(competitionDetails)); 
 
@@ -490,9 +541,8 @@ function startCompetitionTimer(timerId, level,button) {
 
     updateTimer();
     const interval = setInterval(updateTimer, 1000);
-    competitionDetails.interval = interval; // Store interval ID in competitionDetails
+    competitionDetails.interval = interval;
 
-    // Update localStorage with the interval ID
     localStorage.setItem('competitionDetails_' + level, JSON.stringify(competitionDetails));
 }
 
@@ -511,6 +561,24 @@ document.addEventListener("DOMContentLoaded", function() {
             sidebar.classList.toggle("show");
         });
     })
+});
+
+document.getElementById('logout-link').addEventListener('click', function(event) {
+    event.preventDefault(); 
+
+    Swal.fire({
+        title: 'Are you sure you want to log out?',
+        text: "You will need to log in again to continue.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, log out'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = 'admiLogin.html'; 
+        }
+    });
 });
 
 

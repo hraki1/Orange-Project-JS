@@ -1,119 +1,152 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>welcomePage</title>
-    <meta name="description" content="project" />
-    <link rel="stylesheet" href="css/welcomePage.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <body>
-    <div class="container">
-      <header>
-        <nav>
-          <ul>
-            <div class="right">
-              <li>
-                <img
-                  src="img/Screenshot 2024-06-23 133320-Photoroom.png"
-                  alt=""
-                />
-              </li>
-            </div>
-            <div class="left">
-              <li>
-                <a href="./detailsPage.html" target="_blank"
-                  >Participant Login</a
-                >
-              </li>
-              <li>
-                <a href="./admiLogin.html" target="_blank">Admin Login</a>
-              </li>
-            </div>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <!-- <img src="img/Screenshot 2024-06-23 133320-Photoroom.png" alt=""><br><br> -->
-        <h1>Welcome To The Intelegent Cube!</h1>
-        <br />
-        <div class="flex-container">
-          <p>
-            Are you ready to challenge your math skills? Click the Login button
-            to start the game and test your abilities!
-          </p>
-          <div class="illustration">
-            <img src="img/15274235.png" alt="Math Game Illustration" />
-          </div>
-        </div>
-        <br />
-        <section class="instructions">
-          <br />
-          <h2>Instructions</h2>
-          <p>Follow these steps to play the game:</p>
-          <ul>
-            <li>Click the <b>"Login"</b> button to begin.</li>
-            <li>Solve the math problems presented to you.</li>
-            <li>
-              Click the <b>"Next"</b> button to move to the next question after
-              solving each problem.
-            </li>
-            <li>
-              Click the <b>"Submit"</b> button after finishing all the questions
-              to submit your answers.
-            </li>
-          </ul>
-        </section>
-        <section class="rewards">
-          <br />
-          <h2>Rewards</h2>
-          <ul>
-            <li>Complete <b>Level 1</b>: Bronze Medal</li>
-            <li>Complete <b>Level 2</b>: Silver Medal</li>
-            <li>Complete <b>Level 3</b>: Gold Medal</li>
-            <li><b>Perfect Score</b>: Diamond Trophy</li>
-          </ul>
-        </section>
-      </main>
-      <footer>
-        <p>&copy; 2024 Math Game. All rights reserved.</p>
-      </footer>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Nanum+Gothic:700|Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style-index.css">
+
+    <title>Intelegent Cube</title>
+</head>
+<body>    
+    
+    <header id="topHeader">
+       
+        
+<nav>
+    <span class="logo"><img src="assets/img/Screenshot 2024-06-23 133320-Photoroom.png" alt=""></span>
+    <div class="menu-btn-3" onclick="menuBtnFunction(this)">
     </div>
-    <script>
-      function participantAsAdmin() {
-        window.location.assign("");
-      }
+    <div class="mainMenu">
+        <a href="admiLogin.html">Admin login</a>
+    </div>
+</nav>
+    </header>
 
-      function login() {
-        window.location.assign("");
-      }
-      competitionDetails_advanced = {
-        title: "2",
-        description: "3wwwwwwwwwwwwssswwwwwwwwwwwwww",
-        prizes: "3",
-        numberOfQuestions: "10",
-        duration: "1",
-        state: true,
-        endDate: "6/21/2024, 8:51:43 PM",
-      };
+    <section id="intro">
+   
 
-      competitionDetails_beginner = {
-        title: "1",
-        description: "3",
-        prizes: "3",
-        numberOfQuestions: "10",
-        duration: "1",
-        state: true,
-      };
-      localStorage.setItem(
-        "competitionDetails_beginner",
-        JSON.stringify(competitionDetails_advanced)
-      );
-      localStorage.setItem(
-        "competitionDetails_advanced",
-        JSON.stringify(competitionDetails_beginner)
-      );
-    </script>
-  </body>
+        <div id="development-img">
+            <img src="assets/img/cube-removebg-preview.png" alt="Mobile App Development" title="Mobile App Development"/>
+        </div>
+        <div id="intro-info">
+            <div>
+                <h1>Welcome To The Intelegent Cube!
+                </h1>
+                <div id="intro-tag-btn">
+                    <span>Are you ready to challenge your math skills? start the game and test your abilities!</span>
+                    <a href="detailsPage.html" style="float: left;" class="brand-btn">Get started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="success-story">
+        <h1 class="sec-heading">Instructions</h1> 
+        
+        <div class="slider">
+            <div class="col-6 slide-text">
+                <div>
+                    <h2> Follow these steps to solve the Exam: </h2>
+                    <p style="text-align: left;">
+                        -Click the <a style="text-decoration: none; color: black;" href="#">Login</a> button to begin.<br>
+                        -Solve the math problems presented to you.<br>
+                        -Click the "Next" button to move to the next question after solving each problem.<br>
+                        -Click the "Submit" button after finishing all the questions to submit your answers.
+                    </p>
+                    <a href="detailsPage.html" class="brand-btn">Get started</a>
+                </div>
+            </div>
+            <div class="col-6 slide-img">
+                <img src="assets/img/Circles-amico.png" alt="World Travel App Development" title="World Travel Protection"/>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <h1 style="color: aliceblue;"  class="sec-heading">Levels</h1>
+        <ul>
+           
+          
+            <li>
+                <div>
+                    <a href="detailsPage.html">
+                        <i style="color: aliceblue;" class="fas fa-drafting-compass"></i><span>Level 1</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="detailsPage.html">
+                        <i style="color: aliceblue;" class="fas fa-pencil-ruler"></i><span>Level 2</span>
+                    </a>
+                </div>
+            </li>
+          
+        </ul>
+    </section>
+    
+    
+       
+      
+
+    <section id="highlights">
+        <h1 class="sec-heading">Intelegent Cube Math test
+        </h1> 
+    
+        <div class="slider">
+            <div class="col-6 slide-text">
+                <div>
+                    <h2>Our team  made this exam improve your skills </h2>
+                    <p>
+                        Our convenient, fast, and affordable Math test integrates the latest assessment science and AI — empowering anyone to accurately test their math where and when they're at their best.
+                    </p>
+                    <a href="detailsPage.html" class="brand-btn">See More</a>
+                </div>
+            </div>
+            <div class="col-6 slide-img">
+                <img src="assets/img/Circles-rafiki.png" alt="Team Work in Los Angeles" title="Company Team Work"/>
+            </div> 
+        </div>
+    </section>
+  
+   
+    
+    
+    
+    <footer>
+       <div>
+            <span class="logo">Intelegent Cube </span>
+       </div>
+
+       <div class="row">
+          
+       
+            
+            <div class="col-3" id="newsletter">
+                <span class="footer-cat">Stay Connected</span>
+                <form id="subscribe">
+                    <input type="email" id="subscriber-email" placeholder="Enter Email Address"/>
+                    <input type="submit" value="Subscribe" id="btn-scribe"/>
+                </form>
+              
+                
+            </div>
+           
+       </div>
+       <div id="copyright">
+           &copy; All Rights Reserved Orange coding school academy students
+       </div>
+     
+       <a href="#topHeader" id="gotop">Top</a>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/js/script-index.js"></script>
+    
+</body>
 </html>

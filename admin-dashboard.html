@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/style-dashboard.css">
+    <link rel="stylesheet" href="assets/css/style-dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
@@ -15,7 +15,7 @@
             <i class="fas fa-bars "></i>
         </a>                
         <a href="" id="nav-logo">
-            <img src="img/Screenshot 2024-06-23 133320.png" alt="">
+            <img src="assets/img/Screenshot 2024-06-23 133320.png" alt="">
         </a>             
     </nav>
     <div class="container">
@@ -54,10 +54,11 @@
 
             </ul>
             
-                <a href="admiLogin.html" class="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-item">Log out</span>
-                </a>
+            <a href="#" id="logout-link" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Log out</span>
+            </a>
+
         </div>   
         <main>
             <section id="view-questions" class="tab-content active">
@@ -117,7 +118,7 @@
                 <h2>Start Competition</h2><br>
                 <div id="card-container">
                     <div class="card">
-                        <h3>Start beginner Competition</h3>
+                        <h3>Start Beginner Competition</h3>
                         <span class="timer" data-timer="0" id="beginner-timer">00:00</span><br>
                         <button class="toggle-competition" id="toggle-beginner">Start </button>
                     </div>
@@ -135,7 +136,7 @@
                     <option value="advanced">Advanced</option>
                 </select>
                 </div>
-                <div class="scrollable-table-wrapper">
+                <div class="scrollable-table-wrapper" >
                 <table id="resultsTable" >
                     <thead>
                         <tr id="headerRow">
@@ -148,7 +149,7 @@
                 </div>
             </section>
             <section id="Competition-details" class="tab-content">
-                <h2>Competition details</h2><br>
+                <h2>Competition Information</h2><br>
                     <form id="competition-details-form">
                         <div>
                             <select required>
@@ -236,7 +237,9 @@
                 </form>
             </div>
         </div>
-    <script src="javascript/script-dashboard.js"></script>
+    <script src="assets/js/script-dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

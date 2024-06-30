@@ -2,14 +2,13 @@ let participantsArray = JSON.parse(localStorage.getItem("participants")) || [];
 let questionsArray = JSON.parse(localStorage.getItem("questions")) || [];
 let quizzesResults = JSON.parse(localStorage.getItem("quizzesResults")) || [];
 
-let compotitionBeginner = JSON.parse(
+let compotitionAdvance = JSON.parse(
   localStorage.getItem("competitionDetails_advanced")
 );
-let compotitionAdvance = JSON.parse(
+let compotitionBeginner = JSON.parse(
   localStorage.getItem("competitionDetails_beginner")
 );
 
-console.log(compotitionBeginner);
 
 // display none for element
 let detailsPage = document.getElementById("detailsPage");
@@ -34,6 +33,7 @@ let participantObj = {
 let niacknameScreeen = {};
 
 let userLevel = "";
+let userIsActive ;
 let stateCheck;
 let stateSetInterval;
 buttonNext.onclick = () => {
@@ -44,6 +44,7 @@ buttonNext.onclick = () => {
         // if (compotitionAdvance.state) {
         quizzExsistCheck = true;
         userLevel = participantsArray[index].level;
+        userIsActive = participantsArray[index].isActive;
         participantObj = participantsArray[index];
         // }
       } else {
@@ -51,6 +52,7 @@ buttonNext.onclick = () => {
         // if (compotitionBeginner.state) {
         quizzExsistCheck = true;
         userLevel = participantsArray[index].level;
+        userIsActive = participantsArray[index].isActive;
         participantObj = participantsArray[index];
         // }
       }
@@ -77,14 +79,15 @@ buttonNext.onclick = () => {
     let compotitionAdvances = JSON.parse(
       localStorage.getItem("competitionDetails_advanced")
     );
+    console.log(userIsActive)
 
     if (userLevel === "advanced") {
-      if (!compotitionAdvances.state) {
+      if (!compotitionAdvances.state || !userIsActive) {
         stateCheck = false;
       }
     }
     if (userLevel === "beginner") {
-      if (!compotitionBeginners.state) {
+      if (!compotitionBeginners.state || !userIsActive) {
         stateCheck = false;
       }
     }
@@ -110,7 +113,6 @@ buttonNext.onclick = () => {
   let desTime = document.getElementById("des-time");
   let desNumberOfQuestion = document.getElementById("des-numberOfQuestion");
 
-  console.log(niacknameScreeen);
   desLevel.innerHTML = niacknameScreeen.level;
   desNumberOfQuestion.innerHTML = niacknameScreeen.numOfQuestion;
   desTime.innerHTML = niacknameScreeen.time;
@@ -254,8 +256,8 @@ function startQuestions() {
         cleartimerOfQuestion();
         console.log(questionsTimes);
         console.log(count);
-        obj.timeSelectedAnswer = questionsTimes[count];
-        console.log(obj.timeSelectedAnswer);
+        objspa.timeSelectedAnswer = questionsTimes[count];
+        console.log(obj.timeSelectedAnswer +"hello");
         // *********************************************************************
         s = 0;
         m = 0;
@@ -286,9 +288,11 @@ function startQuestions() {
           objspa.correct = true;
         }
       }
+      objspa.timeSelectedAnswer = questionsTimes[count];
       answersOfQuestions.push(objspa);
       console.log(objspa);
       console.log(answersOfQuestions);
+      
 
       count++;
       restBackGroundAnswers();
@@ -320,7 +324,6 @@ function startQuestions() {
             });
             console.log(count - 1 + " " + theNumberOfAnswer);
             console.log(questions[count - 1].options[theNumberOfAnswer]);
-            cleartimerOfQuestion();
             timerHandler();
             console.log(totalTime);
             let numOfCorrectAnswers = 0;
@@ -331,6 +334,7 @@ function startQuestions() {
                 numOfCorrectAnswers++;
               }
             }
+            console.log(questionTimeInterval+"heeloe")
             let ava = (numOfCorrectAnswers / numOfq) * 100;
             let submittedAnswersObject = {
               id: inputUserID.value,
@@ -341,7 +345,9 @@ function startQuestions() {
               numberOfCorrectAnswers: numOfCorrectAnswers,
               answers: answersOfQuestions,
               avarage: ava + "%",
+              //  timeSelectedAnswer:  questionTimeInterval
             };
+            cleartimerOfQuestion();
             quizzesResults.push(submittedAnswersObject);
             localStorage.setItem(
               "quizzesResults",

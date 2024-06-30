@@ -66,6 +66,7 @@ display: none;
     overflow: hidden;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
     padding-top: 10px;
+    z-index: 1000;
 }
 .sidebar-nav.show {
     left: 0;
@@ -116,7 +117,7 @@ main {
     padding: 20px;
     background-color: #5c646e80;
     width: calc(100% - 200px);
-    min-height: 100vh;
+    min-height: 94vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
@@ -221,12 +222,35 @@ form button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0;
+    /* margin: 10px 0; */
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
 .scrollable-table-wrapper {
-    overflow-x: auto;
+    margin: 10px 0;
+        overflow: auto;
+    max-height: 700px;
+    min-width:100% ;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+#resultsTable {
+    max-height: 440px;
+
+}
+
+.scrollable-table-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 table thead tr {
@@ -240,12 +264,15 @@ table td {
     padding: 12px 15px;
     white-space: nowrap;
 }
-table th:nth-of-type(1) {
-    width: 150px;
+
+table th {
+    width:300px;
 }
+
 table tbody tr:nth-of-type(odd) {
     background-color: #f2f6fb;
 }
+
 table tbody tr:nth-of-type(even) {
     background-color: #dfe9f5;
 }
@@ -254,17 +281,24 @@ table tbody tr:last-of-type {
     border-bottom: 2px solid rgb(15 23 42);
     border-radius: 5px;
 }
-.table-options{ 
+
+.table-options {
     display: flex;
     justify-content: space-between;
 
 }
+
 .table-options select,
-.table-options button{
+.table-options button {
     padding: 5px;
     background-color: #5c646e80;
     color: white;
     border-radius: 5px;
+}
+
+
+.scrollable-table-wrapper table {
+    display: block;
 }
 
 .toggle-competition {
@@ -359,6 +393,7 @@ table tbody tr:last-of-type {
         left: -100%;
         background-color: rgb(153, 170, 187);
         width: 100%;
+        height: 100%;
     }
 
     .sidebar-nav a {
@@ -373,7 +408,7 @@ table tbody tr:last-of-type {
 
     nav {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     table {
@@ -387,6 +422,30 @@ table tbody tr:last-of-type {
     .card{
         width: 100%;
         margin: 10px 0;
+    }
+
+}
+@media screen and (max-width: 1300px) {
+    .sidebar-nav {
+        left: -100%;
+        background-color: rgb(153, 170, 187);
+        width: 30%;
+        height: 100%;
+    }
+
+    .sidebar-nav a {
+        width: 100%;
+    }
+
+    main {
+        margin: 10px auto;
+        padding: 20px;
+        width: calc(100% - 20px);
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
     }
 
 }

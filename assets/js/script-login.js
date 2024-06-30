@@ -37,6 +37,7 @@ const storeRegistrationData = (event) => {
     alert("Passwords do not match.");
     return false;
   }
+
   const userData = {
     firstName,
     lastName,
@@ -44,9 +45,11 @@ const storeRegistrationData = (event) => {
     password,
   };
 
-  localStorage.setItem("user", JSON.stringify(userData));
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  users.push(userData);
+  localStorage.setItem("users", JSON.stringify(users));
+
   alert("Registration successful!");
-  location.href = "http://127.0.0.1:5500/admin-dashboard.html";
 };
 
 const authenticateUser = (event) => {
@@ -54,15 +57,12 @@ const authenticateUser = (event) => {
   const loginEmail = document.getElementById("loginEmail").value;
   const loginPassword = document.getElementById("loginPassword").value;
 
-  const storedUserData = JSON.parse(localStorage.getItem("user"));
+  const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (
-    storedUserData &&
-    storedUserData.email === loginEmail &&
-    storedUserData.password === loginPassword
-  ) {
+  const foundUser = users.find(user => user.email === loginEmail && user.password === loginPassword);
+
+  if (foundUser) {
     window.open("admin-dashboard.html", "_self");
-    displayUserData(storedUserData);
   } else {
     alert("Invalid email or password.");
   }
