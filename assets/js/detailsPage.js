@@ -9,7 +9,6 @@ let compotitionBeginner = JSON.parse(
   localStorage.getItem("competitionDetails_beginner")
 );
 
-
 // display none for element
 let detailsPage = document.getElementById("detailsPage");
 let loginHeader = document.getElementById("login-header");
@@ -33,7 +32,7 @@ let participantObj = {
 let niacknameScreeen = {};
 
 let userLevel = "";
-let userIsActive ;
+let userIsActive;
 let stateCheck;
 let stateSetInterval;
 buttonNext.onclick = () => {
@@ -79,15 +78,15 @@ buttonNext.onclick = () => {
     let compotitionAdvances = JSON.parse(
       localStorage.getItem("competitionDetails_advanced")
     );
-    console.log(userIsActive)
+    console.log(userIsActive);
 
     if (userLevel === "advanced") {
-      if (!compotitionAdvances.state || !userIsActive) {
+      if (!compotitionAdvances.state) {
         stateCheck = false;
       }
     }
     if (userLevel === "beginner") {
-      if (!compotitionBeginners.state || !userIsActive) {
+      if (!compotitionBeginners.state) {
         stateCheck = false;
       }
     }
@@ -257,7 +256,7 @@ function startQuestions() {
         console.log(questionsTimes);
         console.log(count);
         objspa.timeSelectedAnswer = questionsTimes[count];
-        console.log(obj.timeSelectedAnswer +"hello");
+        console.log(obj.timeSelectedAnswer + "hello");
         // *********************************************************************
         s = 0;
         m = 0;
@@ -292,7 +291,6 @@ function startQuestions() {
       answersOfQuestions.push(objspa);
       console.log(objspa);
       console.log(answersOfQuestions);
-      
 
       count++;
       restBackGroundAnswers();
@@ -334,7 +332,7 @@ function startQuestions() {
                 numOfCorrectAnswers++;
               }
             }
-            console.log(questionTimeInterval+"heeloe")
+            console.log(questionTimeInterval + "heeloe");
             let ava = (numOfCorrectAnswers / numOfq) * 100;
             let submittedAnswersObject = {
               id: inputUserID.value,

@@ -115,7 +115,7 @@ main {
   padding: 20px;
   background-color: #5c646e80;
   width: calc(100% - 200px);
-  min-height: 94vh;
+  min-height: 80vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
