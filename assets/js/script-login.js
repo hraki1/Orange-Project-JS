@@ -50,6 +50,7 @@ const storeRegistrationData = (event) => {
   localStorage.setItem("users", JSON.stringify(users));
 
   alert("Registration successful!");
+  window.open("admin-dashboard.html", "_self");
 };
 
 const authenticateUser = (event) => {
@@ -59,7 +60,9 @@ const authenticateUser = (event) => {
 
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  const foundUser = users.find(user => user.email === loginEmail && user.password === loginPassword);
+  const foundUser = users.find(
+    (user) => user.email === loginEmail && user.password === loginPassword
+  );
 
   if (foundUser) {
     window.open("admin-dashboard.html", "_self");
